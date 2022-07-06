@@ -29,7 +29,7 @@ terminal Int, Char, Byte, Double, Float, Cadena, Long, Short, Linea,
     Dos_puntos, Identificador, Numero, ERROR;
 
 non terminal INICIO, SENTENCIA, DECLARACION, WHILE, DO, IF, IF_ELSE, FOR, SWITCH,
-    SENTENCIA_BOOLEANA;
+    SENTENCIA_BOOLEANA, CIN, COUT, SCANF, PRINTF ;
 
 start with INICIO;
 
@@ -40,36 +40,69 @@ INICIO ::=
 ;
 SENTENCIA ::= 
     DECLARACION |
+    /*DECLARACION Linea SENTENCIA | */
     SENTENCIA_BOOLEANA |
+    /*SENTENCIA_BOOLEANA Linea SENTENCIA | */
     WHILE |
+    /*WHILE Linea SENTENCIA |*/
     DO |
+    /*DO Linea SENTENCIA | */
     IF |
+    /*IF Linea SENTENCIA | */
     IF_ELSE |
+    /*IF_ELSE Linea SENTENCIA | */
     FOR |
-    SWITCH
+    /*FOR Linea SENTENCIA | */
+    SWITCH 
+    /*SWITCH Linea SENTENCIA */
+    CIN | 
+    COUT | 
+    SCANF | 
+    PRINTF
 ;
 DECLARACION ::=
     Int Identificador P_coma |
-    Double Identificador P_coma | 
-    Int Identificador Op_atr_suma Numero P_coma |
     Int Identificador Igual Numero P_coma |
-    Int Identificador Op_atr_resta Numero P_coma |
+    Int Identificador Coma Identificador P_coma |
+    Int Identificador Igual Numero Coma Identificador Igual Numero P_coma |
+    Double Identificador P_coma |
     Double Identificador Igual Numero P_coma |
+    Double Identificador Coma Identificador P_coma |
+    Double Identificador Igual Numero Coma Identificador Igual Numero P_coma |
+    Float Identificador P_coma |
     Float Identificador Igual Numero P_coma |
-    Int Identificador Op_atr_incremento P_coma | 
-    Int Op_atr_incremento Identificador P_coma | 
-    Cadena Identificador Op_atr_suma Comillas Comillas P_coma |
+    Float Identificador Coma Identificador P_coma |
+    Float Identificador Igual Numero Coma Identificador Igual Numero P_coma |
+    Char Identificador Corchete_a Numero Corchete_c P_coma |
+    Cadena Identificador P_coma |
     Cadena Identificador Igual Comillas Comillas P_coma |
-    Cadena Identificador Op_atr_suma Comillas Identificador Comillas P_coma |
-    Cadena Identificador Igual Comillas Identificador Comillas P_coma
+    Cadena Identificador Igual Comillas Identificador Comillas P_coma |
+    Cadena Identificador Coma Identificador P_coma |
+    Cadena Identificador Igual Comillas Comillas Coma Identificador Igual Comillas Comillas P_coma |
+    Identificador Op_atr_suma Numero P_coma |  
+    Identificador Op_atr_resta Numero P_coma |
+    Identificador Op_atr_incremento P_coma | 
+    Identificador Op_atr_decremento P_coma
 ;
 SENTENCIA_BOOLEANA ::= 
     Identificador Op_rel_equivalente True |
+    Identificador Op_rel_equivalente True Op_log_or SENTENCIA_BOOLEANA |
+    Identificador Op_rel_equivalente True Op_log_and SENTENCIA_BOOLEANA |
     Identificador Op_rel_equivalente False |
+    Identificador Op_rel_equivalente False Op_log_or SENTENCIA_BOOLEANA |
+    Identificador Op_rel_equivalente False Op_log_and SENTENCIA_BOOLEANA |
     Identificador Op_rel_equivalente Numero |
+    Identificador Op_rel_equivalente Numero Op_log_or SENTENCIA_BOOLEANA |
+    Identificador Op_rel_equivalente Numero Op_log_and SENTENCIA_BOOLEANA |
     Identificador Op_rel_equivalente Identificador |
+    Identificador Op_rel_equivalente Identificador Op_log_or SENTENCIA_BOOLEANA |
+    Identificador Op_rel_equivalente Identificador Op_log_and SENTENCIA_BOOLEANA |
     Identificador Op_rel_equivalente Comillas Comillas |
-    Identificador Op_rel_equivalente Comillas Identificador Comillas
+    Identificador Op_rel_equivalente Comillas Comillas Op_log_or SENTENCIA_BOOLEANA |
+    Identificador Op_rel_equivalente Comillas Comillas Op_log_and SENTENCIA_BOOLEANA |
+    Identificador Op_rel_equivalente Comillas Identificador Comillas |
+    Identificador Op_rel_equivalente Comillas Identificador Comillas Op_log_or SENTENCIA_BOOLEANA |
+    Identificador Op_rel_equivalente Comillas Identificador Comillas Op_log_and SENTENCIA_BOOLEANA
 ;
 WHILE ::=
     While Parent_a SENTENCIA_BOOLEANA Parent_c Llave_a Linea SENTENCIA Linea Llave_c
