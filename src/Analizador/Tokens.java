@@ -20,11 +20,13 @@ public enum Tokens {
     Short,
     Linea,
     Comillas,
+    /*Backslash,*/
     Igual,
     Suma,
     Resta,
     Multiplicacion,
     Division,
+    Modulo,
     Parent_a,
     Parent_c,
     Llave_a,

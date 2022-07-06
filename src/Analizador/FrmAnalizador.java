@@ -205,6 +205,9 @@ public class FrmAnalizador extends javax.swing.JFrame {
                 case Comillas:
                     resultado += "  <Comillas>\t\t" + lexicos.lexemas + "\n";
                     break;
+                /*case Backslash:
+                    resultado += "  <Backslash>\t\t" + lexicos.lexemas + "\n";
+                    break;*/
                 case Igual:
                     resultado += "  <Operador igual>\t" + lexicos.lexemas + "\n";
                     break;
@@ -219,6 +222,9 @@ public class FrmAnalizador extends javax.swing.JFrame {
                     break;
                 case Division:
                     resultado += "  <Operador division>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Modulo:
+                    resultado += "  <Operador modulo>\t" + lexicos.lexemas + "\n";
                     break;
                 case Parent_a:
                     resultado += "  <Parentesis de apertura>\t" + lexicos.lexemas + "\n";
@@ -323,61 +329,61 @@ public class FrmAnalizador extends javax.swing.JFrame {
                     resultado += "  <Reservada main>\t" + lexicos.lexemas + "\n";
                     break; 
                 case Op_log_and:
-                    resultado += "  <Operador logico and>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Operador and>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_log_or:
-                    resultado += "  <Operador logico or>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Operador or>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_log_not:
-                    resultado += "  <Operador logico not>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Operador not>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_log_and_bit:
-                    resultado += "  <Operador logico and bit a bit>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Op and bit a bit>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_log_or_bit:
-                    resultado += "  <Operador logico or bit a bit>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Op or bit a bit>\t" + lexicos.lexemas + "\n";
                     break;            
                 case Op_rel_mayor_que:
-                    resultado += "  <Operador relacional mayor que>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Operador mayor que>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_rel_menor_que:
-                    resultado += "  <Operador relacional menor que>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Operador menor que>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_rel_equivalente:
-                    resultado += "  <Operador relacional equivalente>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Operador equivalente>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_rel_diferente:
-                    resultado += "  <Operador relacional diferente>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Operador diferente>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_rel_mayor_igual:
-                    resultado += "  <Operador relacional mayor o igual>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Op mayor o igual>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_rel_menor_igual:
-                    resultado += "  <Operador relacional menor o igual>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Op menor o igual>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_rel_desplaz_izq:
-                    resultado += "  <Operador relacional desplazar izquierda>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Op desplazar izquierda>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_rel_desplaz_der:
-                    resultado += "  <Operador relacional desplazar derecha>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Op desplazar derecha>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_atr_suma:
-                    resultado += "  <Operador atribucion suma>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Op atribucion suma>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_atr_resta:
-                    resultado += "  <Operador atribucion resta>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Op atribucion resta>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_inclu_lib:
-                    resultado += "  <Operador #>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Operador #>\t\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_atr_producto:
-                    resultado += "  <Operador atribucion multiplicacion>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Op atr multiplicacion>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_atr_division:
-                    resultado += "  <Operador atribucion division>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Op atribucion division>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_atr_modulo:
-                    resultado += "  <Operador atribucion modulo>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Op atribucion modulo>\t" + lexicos.lexemas + "\n";
                     break;
                 case Op_atr_incremento:
                     resultado += "  <Operador Incremento\t" + lexicos.lexemas + "\n";
@@ -386,10 +392,10 @@ public class FrmAnalizador extends javax.swing.JFrame {
                     resultado += "  <Operador Decremento>\t" + lexicos.lexemas + "\n";
                     break;
                 case True:
-                    resultado += "  <Operador booleano true>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Booleano true>\t" + lexicos.lexemas + "\n";
                     break;
                 case False:
-                    resultado += "  <Operador booleano false>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Booleano false>\t" + lexicos.lexemas + "\n";
                     break;    
                 case P_coma:
                     resultado += "  <Punto y coma>\t" + lexicos.lexemas + "\n";

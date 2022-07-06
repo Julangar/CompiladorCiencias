@@ -41,7 +41,10 @@ espacio=[ \t \r]+
 ( "//"(.)* ) {/*Ignore*/}
 
 /* Salto de linea */
-( "\n" ) {return Linea;}
+( "\n" ) {lexemas=yytext (); return Linea;}
+
+/* Backslash */
+/*( "\\" ) {return Backslash;}*/
 
 /* Comillas */
 ( "\"" ) {lexemas=yytext(); return Comillas;}
@@ -60,6 +63,9 @@ espacio=[ \t \r]+
 
 /* Operador Division */
 ( "/" ) {lexemas=yytext(); return Division;}
+
+/* Operador Modulo */
+( "%" ) {lexemas=yytext(); return Modulo;}
 
 /* Parentesis de apertura */
 ( "(" ) {lexemas=yytext(); return Parent_a;}

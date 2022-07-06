@@ -9,7 +9,7 @@ import java_cup.runtime.Symbol;
 %char
 L=[a-zA-Z_]+
 D=[0-9]+
-espacio=[ \t \r \n]+
+espacio=[ \t \r ]+
 %{
     private Symbol symbol(int type, Object value){
         return new Symbol(type, yyline, yycolumn, value);
@@ -52,6 +52,9 @@ espacio=[ \t \r \n]+
 /* Salto de linea */
 ( "\n" ) {return new Symbol(sym.Linea, yychar, yyline, yytext());}
 
+/* Backslash */
+/*( "\\" ) {return new Symbol(sym.Backslash, yychar, yyline, yytext());}*/
+
 /* Comillas */
 ( "\"" ) {return new Symbol(sym.Comillas, yychar, yyline, yytext());}
 
@@ -66,6 +69,9 @@ espacio=[ \t \r \n]+
 
 /* Operador Multiplicacion */
 ( "*" ) {return new Symbol(sym.Multiplicacion, yychar, yyline, yytext());}
+
+/* Operador Modulo */
+( "%" ) {return new Symbol(sym.Modulo, yychar, yyline, yytext());}
 
 /* Operador Division */
 ( "/" ) {return new Symbol(sym.Division, yychar, yyline, yytext());}
@@ -146,7 +152,7 @@ espacio=[ \t \r \n]+
 ( using ) {return new Symbol(sym.Using, yychar, yyline, yytext());}
 
 /* Palabra reservada Unsigned */
-( unsigned ) {return new Symbol(sym.Undisgned, yychar, yyline, yytext());}
+( unsigned ) {return new Symbol(sym.Unsigned, yychar, yyline, yytext());}
 
 /* Palabra reservada Namespace */
 ( namespace ) {return new Symbol(sym.Namespace, yychar, yyline, yytext());}
