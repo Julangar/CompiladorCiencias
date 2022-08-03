@@ -5,34 +5,11 @@ import static Analizador.Tokens.*;
 %type Tokens
 L=[a-zA-Z_]+
 D=[0-9]+
-espacio=[ \t \r]+
+espacio=[ ,\t ,\r]+
 %{
     public String lexemas;
 %}
 %%
-/* Integer */
-( int ) {lexemas=yytext(); return Int;}
-
-/* Char */
-( char ) {lexemas=yytext(); return Char;}
-
-/* Byte */
-( byte ) {lexemas=yytext(); return Byte;}
-
-/* Double */
-( double ) {lexemas=yytext(); return Double;}
-
-/* Float */
-( float ) {lexemas=yytext(); return Float;}
-
-/* Tipo de dato String */
-( String ) {lexemas=yytext(); return Cadena;}
-
-/* Long */
-( long ) {lexemas=yytext(); return Long;}
-
-/* Palabra reservada Short */
-( short ) {lexemas=yytext(); return Short;}
 
 /* Espacios en blanco */
 {espacio} {/*Ignore*/}
@@ -41,16 +18,120 @@ espacio=[ \t \r]+
 ( "//"(.)* ) {/*Ignore*/}
 
 /* Salto de linea */
-( "\n" ) {lexemas=yytext (); return Linea;}
-
-/* Backslash */
-/*( "\\" ) {return Backslash;}*/
+( "\n" ) {return Linea;}
 
 /* Comillas */
 ( "\"" ) {lexemas=yytext(); return Comillas;}
 
-/* Operador Igual */
-( "=" ) {lexemas=yytext(); return Igual;}
+/*                  Palabras reservadas                 */
+
+/* Palabra reservada Auto */
+( auto ) {lexemas=yytext(); return Auto;}
+
+/* Palabra reservada Const */
+( const ) {lexemas=yytext(); return Const;}
+
+/* Palabra reservada Enum */
+( enum ) {lexemas=yytext(); return Enum;}
+
+/* Palabra reservada Goto */
+( goto ) {lexemas=yytext(); return Goto;}
+
+/* Palabra reservada Sizeof */
+( sizeof ) {lexemas=yytext(); return Sizeof;}
+
+/* Palabra reservada Register */
+( register ) {lexemas=yytext(); return Register;}
+
+/* Palabra reservada Unsigned */
+( unsigned ) {lexemas=yytext(); return Unsigned;}
+
+/* Palabra reservada Continue */
+( continue ) {lexemas=yytext(); return Continue;}
+
+/* Palabra reservada Extern */
+( extern ) {lexemas=yytext(); return Extern;}
+
+/* Palabra reservada Return */
+( return ) {lexemas=yytext(); return Return;}
+
+/* Palabra reservada Static */
+( static ) {lexemas=yytext(); return Static;}
+
+/* Palabra reservada Void */
+( void ) {lexemas=yytext(); return Void;}
+
+/* Palabra reservada Struct */
+( struct ) {lexemas=yytext(); return Struct;}
+
+/* Palabra reservada Typedef */
+( typedef ) {lexemas=yytext(); return Typedef;}
+
+/* Palabra reservada Volatile */
+( volatile ) {lexemas=yytext(); return Volatile;}
+
+/* Palabra reservada Signed */
+( signed ) {lexemas=yytext(); return Signed;}
+
+/* Palabra reservada Union */
+( union ) {lexemas=yytext(); return Union;}
+
+/*                  Tipos de datos                  */
+
+/* Tipo de dato Byte */
+( byte ) {lexemas=yytext(); return Byte;}
+
+/* Tipo de dato Int */
+( int ) {lexemas=yytext(); return Int;}
+
+/* Tipo de dato Short */
+( short ) {lexemas=yytext(); return Short;}
+
+/* Tipo de dato Long */
+( long ) {lexemas=yytext(); return Long;}
+
+/* Tipo de dato Float */
+( float ) {lexemas=yytext(); return Float;}
+
+/* Tipo de dato Double */
+( double ) {lexemas=yytext(); return Double;}
+
+/* Tipo de dato Char */
+( char ) {lexemas=yytext(); return Char;}
+
+/* Tipo de dato String */
+( String ) {lexemas=yytext(); return Cadena;}
+
+/*                  Estructuras de control                  */
+
+/* Palabra reservada If */
+( if ) {lexemas=yytext(); return If;}
+
+/* Palabra reservada Else */
+( else ) {lexemas=yytext(); return Else;}
+
+/* Palabra reservada Do */
+( do ) {lexemas=yytext(); return Do;}
+
+/* Palabra reservada While */
+( while ) {lexemas=yytext(); return While;}
+
+/* Palabra reservada For */
+( for ) {lexemas=yytext(); return For;}
+
+/* Palabra reservada Switch */
+( switch ) {lexemas=yytext(); return Switch;}
+
+/* Palabra reservada Case */
+( case ) {lexemas=yytext(); return Case;}
+
+/* Palabra reservada Default */
+( default ) {lexemas=yytext(); return Default;}
+
+/* Palabra reservada Break */
+( break ) {lexemas=yytext(); return Break;}
+
+/*                  Operadores Aritmeticos                  */
 
 /* Operador Suma */
 ( "+" ) {lexemas=yytext(); return Suma;}
@@ -67,11 +148,93 @@ espacio=[ \t \r]+
 /* Operador Modulo */
 ( "%" ) {lexemas=yytext(); return Modulo;}
 
+/*                  Operadores Logicos                 */
+
+/* Operador OR logico */
+( "||" ) {lexemas=yytext(); return Op_or;}
+
+/* Operador AND logico */
+( "&&" ) {lexemas=yytext(); return Op_and;}
+
+/* Operador OR bit a bit */
+( "|" ) {lexemas=yytext(); return Op_or_b2b;}
+
+/* Operador AND bit a bit */
+( "&" ) {lexemas=yytext(); return Op_and_b2b;}
+
+/* Operador XOR bit a bit */
+( "^" ) {lexemas=yytext(); return Op_xor_b2b;}
+
+/* Operador NOT */
+( "!" ) {lexemas=yytext(); return Op_not;}
+
+/*              Operadores Relacionales             */
+
+/* Operador Menor que */
+( "<" ) {lexemas=yytext(); return Op_smaller_than;}
+
+/* Operador Menor o igual que */
+( "<=" ) {lexemas=yytext(); return Op_smaller_than_equal_to;}
+
+/* Operador Mayor que */
+( ">" ) {lexemas=yytext(); return Op_greater_than;}
+
+/* Operador Mayor o igual que */
+( ">=" ) {lexemas=yytext(); return Op_greater_than_equal_to;}
+
+/* Operador Igual */
+( "==" ) {lexemas=yytext(); return Op_equal;}
+
+/* Operador Diferente */
+( "!=" ) {lexemas=yytext(); return Op_not_equal;}
+
+/*                  Operadores de Asignacion                    */
+
+/* Operador Asignacion */
+( "=" ) {lexemas=yytext(); return Op_asignacion;}
+
+/* Operador Suma */
+( "+=" ) {lexemas=yytext(); return Op_suma;}
+
+/* Operador Resta */
+( "-=" ) {lexemas=yytext(); return Op_resta;}
+
+/* Operador Multiplicacion */
+( "*=" ) {lexemas=yytext(); return Op_multiplicacion;}
+
+/* Operador Division */
+( "/=" ) {lexemas=yytext(); return Op_division;}
+
+/* Operador Modulo */
+( "%=" ) {lexemas=yytext(); return Op_modulo;}
+
+/*                  Otros Operadores                    */
+
+/* Operador desplazamiento bits derecha */
+( ">>" ) {lexemas = yytext(); return Op_desplazamiento_bits_der;}
+
+/* Operador desplazamiento bits izquierda */
+( "<<" ) {lexemas = yytext(); return Op_desplazamiento_bits_izq;}
+
+/* Operador incremento */
+( "++" ) {lexemas = yytext(); return Op_incremento;}
+
+/* Operador decremento */
+( "--" ) {lexemas = yytext(); return Op_decremento;}
+
+/* Operadores True */
+( true ) {lexemas = yytext(); return Op_true;}
+
+/* Operadores False */
+( false ) {lexemas = yytext(); return Op_false;}
+
+/*                  Delimitadores                 */
+
 /* Parentesis de apertura */
-( "(" ) {lexemas=yytext(); return Parent_a;}
+( "(" ) {lexemas=yytext(); return Parentesis_a;}
 
 /* Parentesis de cierre */
-( ")" ) {lexemas=yytext(); return Parent_c;}
+( ")" ) {lexemas=yytext(); return Parentesis_c;}
 
 /* Llave de apertura */
 ( "{" ) {lexemas=yytext(); return Llave_a;}
@@ -80,175 +243,76 @@ espacio=[ \t \r]+
 ( "}" ) {lexemas=yytext(); return Llave_c;}
 
 /* Corchete de apertura */
-( "[" ) {lexemas=yytext(); return Corchete_a;}
+( "[" ) {lexemas = yytext(); return Corchete_a;}
 
 /* Corchete de cierre */
-( "]" ) {lexemas=yytext(); return Corchete_c;}
+( "]" ) {lexemas = yytext(); return Corchete_c;}
 
-/* Palabra reservada If */
-( if ) {lexemas=yytext(); return If; }
+/*                  Librerias                   */
 
-/* Palabra reservada Register */
-( register ) {lexemas=yytext(); return Register;}
+/* Math.h */
+( "math.h" ) {lexemas=yytext(); return Math;}
 
-/* Palabra reservada Else */
-( else ) {lexemas=yytext(); return Else; }
+/* Stdio.h */
+( "stdio.h" ) {lexemas=yytext(); return Stdio;}
 
-/* Palabra reservada Return */
-( return ) {lexemas=yytext(); return Return;}
+/* Stdlib.h */
+( "stdlib.h" ) {lexemas=yytext(); return Stdlib;}
 
-/* Palabra reservada Const */
-( const ) {lexemas=yytext(); return Const;}
+/* Time.h */
+( "time.h" ) {lexemas=yytext(); return Time;}
 
-/* Palabra reservada Continue */
-( continue ) {lexemas=yytext(); return Continue;}
-
-/* Palabra reservada Switch */
-( switch ) {lexemas=yytext(); return Switch; }
-
-/* Palabra reservada Typedef */
-( typedef ) {lexemas=yytext(); return Typedef;}
-
-/* Palabra reservada Case */
-( case ) {lexemas=yytext(); return Case; }
-
-/* Palabra resrvada Void */
-( void ) {lexemas=yytext(); return Void;}
-
-/* Palabra reservada Break */
-( break ) {lexemas=yytext(); return Break; }
-
-/* Palabra reservada Default */
-( default ) {lexemas=yytext(); return Default; }
-
-/* Palabra reservada Do */
-( do ) {lexemas=yytext(); return Do; }
-
-/* Palabra reservada While */
-( while ) {lexemas=yytext(); return While; }
-
-/* Palabra reservada Struct */
-( struct ) {lexemas=yytext(); return Struct;}
-
-/* Palabra reservada For */
-( for ) {lexemas=yytext (); return For;}
-
-/* Palabra reservada Include */
-( include ) {lexemas=yytext(); return Include; }
-
-/* Palabra reservada Iostream */
-( iostream ) {lexemas=yytext(); return Iostream; }
+/* Iostream */
+( "iostream" ) {lexemas=yytext(); return Iostream;}
 
 /* Palabra reservada Using */
-( using ) {lexemas=yytext(); return Using; }
-
-/* Palabra reservada Unsigned*/
-( unsigned ) {lexemas=yytext(); return Unsigned;}
+( using ) {lexemas=yytext(); return Using;}
 
 /* Palabra reservada Namespace */
-( namespace ) {lexemas=yytext(); return Namespace; }
+( namespace ) {lexemas=yytext(); return Namespace;}
 
-/* Palabra reservada Std*/
-( std ) {lexemas=yytext(); return Std; }
+/* Palabra reservada Std */
+( std ) {lexemas=yytext(); return Std;}
 
-/* Palabra reservada Cin*/
-( cin ) {lexemas=yytext(); return Cin; }
+/*                  I/O                 */
 
-/* Palabra reservada define*/
-( define ) {lexemas=yytext(); return Define; } 
+/* Palabra reservada Cout */
+( cout ) {lexemas=yytext(); return Cout;}
 
-/* Palabra reservada Cout*/
-( cout ) {lexemas=yytext(); return Cout; }
+/* Palabra reservada Cin */
+( cin ) {lexemas=yytext(); return Cin;}
 
-/* Palabra reservada Scanf*/
-( scanf ) {lexemas=yytext(); return Scanf; }
+/* Palabra reservada Endl */
+( endl ) {lexemas=yytext(); return Endl;}
 
-/* Palabra reservada Printf*/
-( printf ) {lexemas=yytext(); return Printf; }
+/*                  Otros                   */
 
 /* Marcador de inicio de algoritmo */
 ( "main" ) {lexemas=yytext(); return Main;}
 
-/* Operador logico and */
-( "&&" ) {lexemas=yytext(); return Op_log_and; } 
+/* Palabra reservada SystemC */
+( "system" ) {lexemas=yytext(); return SystemC;}
 
-/* Operador logico or */
-( "||" ) {lexemas=yytext(); return Op_log_or; } 
-
-/* Operador logico not */
-( "!" ) {lexemas=yytext(); return Op_log_not; } 
-
-/* Operador logico and bit a bit */
-( "&" ) {lexemas=yytext(); return Op_log_and_bit; } 
-
-/* Operador logico or bit a bit */
-( "|" ) {lexemas=yytext(); return Op_log_or_bit; }
-
-/* Operador Relacional Mayor que */
-( ">" ) {lexemas=yytext(); return Op_rel_mayor_que;}
-
-/* Operador Relacional Menor que */
-( "<"  ) {lexemas=yytext(); return Op_rel_menor_que;}
-
-/* Operador Relacional Equivalente */
-( "==" ) {lexemas=yytext(); return Op_rel_equivalente;}
-
-/* Operador Relacional Diferente */
-( "!=" ) {lexemas=yytext(); return Op_rel_diferente;}
-
-/* Operador Relacional Mayor o Igual */
-( ">=" ) {lexemas=yytext(); return Op_rel_mayor_igual;}
-
-/* Operador Relacional Menor o Igual */
-( "<=" ) {lexemas=yytext(); return Op_rel_menor_igual;}
-
-/* Operador Relacional Desplazamiento Izquierda */
-( "<<" ) {lexemas=yytext(); return Op_rel_desplaz_izq;}
-
-/* Operador Relacional Desplazamiento Derecha */
-( ">>" ) {lexemas=yytext(); return Op_rel_desplaz_der;}
-
-/* Operador Atribucion Suma */
-( "+=" ) {lexemas=yytext(); return Op_atr_suma; }
-
-/* Operador Atribucion Resta */
-( "-=" ) {lexemas=yytext(); return Op_atr_resta; }
-
-/* Operador asignacion libreria */
-( "#" ) {lexemas=yytext(); return Op_inclu_lib;}
-
-/* Operador Atribucion Producto */
-( "*=") {lexemas=yytext(); return Op_atr_producto; }
-
-/* Operador Atribucion Division */
-( "/=" ) {lexemas=yytext(); return Op_atr_division; }
-
-/* Operador Atribucion Modulo */
-( "%=" ) {lexemas=yytext(); return Op_atr_modulo; }
-
-/* Operadores Incremento */
-( "++" ) {lexemas=yytext(); return Op_atr_incremento; }
-
-/* Operadores Decremento */
-( "--" ) {lexemas=yytext(); return Op_atr_decremento; }
-
-/* Operador Booleano True */
-( true ) {lexemas=yytext(); return True; }
-
-/* Operador Booleano False */
-( false ) {lexemas=yytext(); return False; }
-
-/* P_coma */
-( ";" ) {lexemas=yytext(); return P_coma;}
-
-/* Coma */
-( "," ) {lexemas=yytext(); return Coma;}
+/* Marcador de inicio de impresion en pantalla */
+( "printf" ) {lexemas=yytext(); return Printf;}
 
 /* Punto */
 ( "." ) {lexemas=yytext(); return Punto;}
 
-/* Dos_puntos */
+/* Coma */
+( "," ) {lexemas=yytext(); return Coma;}
+
+/* Dos puntos */
 ( ":" ) {lexemas=yytext(); return Dos_puntos;}
+
+/* Punto y coma */
+( ";" ) {lexemas=yytext(); return Punto_coma;}
+
+/* Almohadilla */
+( "#" ) {lexemas=yytext(); return Almohadilla;}
+
+/* Palabra reservada Include */
+( include ) {lexemas=yytext(); return Include;}
 
 /* Identificador */
 {L}({L}|{D})* {lexemas=yytext(); return Identificador;}

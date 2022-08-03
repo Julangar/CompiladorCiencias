@@ -174,30 +174,6 @@ public class FrmAnalizador extends javax.swing.JFrame {
                 return;
             }
             switch (token) {
-                case Int:
-                    resultado += "  <Reservada int>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Char:
-                    resultado += "  <Reservada char>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Byte:
-                    resultado += "  <Reservada byte>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Double:
-                    resultado += "  <Reservada double>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Float:
-                    resultado += "  <Reservada float>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Cadena:
-                    resultado += "  <Cadena>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Long:
-                    resultado += "  <Reservada long>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Short:
-                    resultado += "  <Reservada short>\t" + lexicos.lexemas + "\n";
-                    break;
                 case Linea:
                     cont++;
                     resultado += "LINEA " + cont + "\n";
@@ -205,31 +181,199 @@ public class FrmAnalizador extends javax.swing.JFrame {
                 case Comillas:
                     resultado += "  <Comillas>\t\t" + lexicos.lexemas + "\n";
                     break;
-                /*case Backslash:
-                    resultado += "  <Backslash>\t\t" + lexicos.lexemas + "\n";
-                    break;*/
-                case Igual:
-                    resultado += "  <Operador igual>\t" + lexicos.lexemas + "\n";
+                case Auto:
+                    resultado += "  <Reservada Auto>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Const:
+                    resultado += "  <Reservada Const>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Enum:
+                    resultado += "  <Reservada Enum>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Goto:
+                    resultado += "  <Reservada Goto>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Sizeof:
+                    resultado += "  <Reservada Sizeof>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Register:
+                    resultado += "  <Reservada Register>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Unsigned:
+                    resultado += "  <Reservada Unsigned>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Continue:
+                    resultado += "  <Reservada Continue>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Extern:
+                    resultado += "  <Reservada Extern>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Return:
+                    resultado += "  <Reservada Return>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Static:
+                    resultado += "  <Reservada Static>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Void:
+                    resultado += "  <Reservada Void>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Struct:
+                    resultado += "  <Reservada Struct>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Typedef:
+                    resultado += "  <Reservada Typedef>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Volatile:
+                    resultado += "  <Reservada Volatile>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Signed:
+                    resultado += "  <Reservada Signed>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Union:
+                    resultado += "  <Reservada Union>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Byte:
+                    resultado += "  <Tipo de dato Byte>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Int:
+                    resultado += "  <Tipo de dato Int>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Short:
+                    resultado += "  <Tipo de dato Short>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Long:
+                    resultado += "  <Tipo de dato Long>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Float:
+                    resultado += "  <Tipo de dato Float>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Double:
+                    resultado += "  <Tipo de dato Double>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Char:
+                    resultado += "  <Tipo de dato Char>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Cadena:
+                    resultado += "  <Tipo de dato Cadena>\t" + lexicos.lexemas + "\n";
+                    break;
+                case If:
+                    resultado += "  <Reservada If>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Else:
+                    resultado += "  <Reservada Else>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Do:
+                    resultado += "  <Reservada Do>\t" + lexicos.lexemas + "\n";
+                    break;
+                case While:
+                    resultado += "  <Reservada While>\t" + lexicos.lexemas + "\n";
+                    break;
+                case For:
+                    resultado += "  <Reservada For>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Switch:
+                    resultado += "  <Reservada Switch>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Case:
+                    resultado += "  <Reservada Case>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Default:
+                    resultado += "  <Reservada Default>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Break:
+                    resultado += "  <Reservada Break>\t" + lexicos.lexemas + "\n";
                     break;
                 case Suma:
-                    resultado += "  <Operador suma>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Operador Suma>\t" + lexicos.lexemas + "\n";
                     break;
                 case Resta:
-                    resultado += "  <Operador resta>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Operador Resta>\t" + lexicos.lexemas + "\n";
                     break;
                 case Multiplicacion:
-                    resultado += "  <Operador multiplicacion>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Operador Multiplicacion>\t" + lexicos.lexemas + "\n";
                     break;
                 case Division:
-                    resultado += "  <Operador division>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Operador Division>\t" + lexicos.lexemas + "\n";
                     break;
                 case Modulo:
-                    resultado += "  <Operador modulo>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Operador Modulo>\t" + lexicos.lexemas + "\n";
                     break;
-                case Parent_a:
+                case Op_or:
+                    resultado += "  <Operador OR logico>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_and:
+                    resultado += "  <Operador AND logico>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_or_b2b:
+                    resultado += "  <Operador OR bit a bit>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_and_b2b:
+                    resultado += "  <Operador AND bit a bit>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_xor_b2b:
+                    resultado += "  <Operador XOR bit a bit>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_not:
+                    resultado += "  <Operador NOT>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_smaller_than:
+                    resultado += "  <Operador Menor que>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_smaller_than_equal_to:
+                    resultado += "  <Operador Menor o igual que>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_greater_than:
+                    resultado += "  <Operador Mayor que>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_greater_than_equal_to:
+                    resultado += "  <Operador Mayor o igual que>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_equal:
+                    resultado += "  <Operador Igual>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_not_equal:
+                    resultado += "  <Operador Diferente>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_asignacion:
+                    resultado += "  <Operador Asignacion>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_suma:
+                    resultado += "  <Operador Suma>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_resta:
+                    resultado += "  <Operador Resta>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_multiplicacion:
+                    resultado += "  <Operador Multiplicacion>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_division:
+                    resultado += "  <Operador Division>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_modulo:
+                    resultado += "  <Operador Modulo>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_desplazamiento_bits_der:
+                    resultado += "  <Operador desplazamiento bits derecha>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_desplazamiento_bits_izq:
+                    resultado += "  <Operador desplazamiento bits izquierda>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_incremento:
+                    resultado += "  <Operador incremento>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_decremento:
+                    resultado += "  <Operador decremento>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_true:
+                    resultado += "  <Operador true>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Op_false:
+                    resultado += "  <Operador false>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Parentesis_a:
                     resultado += "  <Parentesis de apertura>\t" + lexicos.lexemas + "\n";
                     break;
-                case Parent_c:
+                case Parentesis_c:
                     resultado += "  <Parentesis de cierre>\t" + lexicos.lexemas + "\n";
                     break;
                 case Llave_a:
@@ -244,171 +388,64 @@ public class FrmAnalizador extends javax.swing.JFrame {
                 case Corchete_c:
                     resultado += "  <Corchete de cierre>\t" + lexicos.lexemas + "\n";
                     break;
-                case If:
-                    resultado += "  <Reservada if>\t" + lexicos.lexemas + "\n";
+                case Math:
+                    resultado += "  <Libreria Math.h>\t" + lexicos.lexemas + "\n";
                     break;
-                case Register:
-                    resultado += "  <Reservada register>\t" + lexicos.lexemas + "\n";
+                case Stdio:
+                    resultado += "  <Libreria Stdio.h>\t" + lexicos.lexemas + "\n";
                     break;
-                case Else:
-                    resultado += "  <Reservada else>\t" + lexicos.lexemas + "\n";
+                case Stdlib:
+                    resultado += "  <Libreria Stdlib.h>\t" + lexicos.lexemas + "\n";
                     break;
-                case Return:
-                    resultado += "  <Reservada return>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Const:
-                    resultado += "  <Reservada const>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Continue:
-                    resultado += "  <Reservada continue>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Switch:
-                    resultado += "  <Reservada switch>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Typedef:
-                    resultado += "  <Reservada typedef>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Case:
-                    resultado += "  <Reservada case>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Void:
-                    resultado += "  <Reservada void>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Break:
-                    resultado += "  <Reservada break>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Default:
-                    resultado += "  <Reservada default>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Do:
-                    resultado += "  <Reservada do>\t" + lexicos.lexemas + "\n";
-                    break;
-                case While:
-                    resultado += "  <Reservada while>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Struct:
-                    resultado += "  <Reservada struct>\t" + lexicos.lexemas + "\n";
-                    break;
-                case For:
-                    resultado += "  <Reservada for>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Include:
-                    resultado += "  <Reservada include>\t" + lexicos.lexemas + "\n";
+                case Time:
+                    resultado += "  <Libreria Time.h>\t" + lexicos.lexemas + "\n";
                     break;
                 case Iostream:
-                    resultado += "  <Reservada iostream>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Libreria Iostream>\t" + lexicos.lexemas + "\n";
                     break;
                 case Using:
-                    resultado += "  <Reservada using>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Unsigned:
-                    resultado += "  <Reservada unsigned>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Palabra Reservada Using>\t" + lexicos.lexemas + "\n";
                     break;
                 case Namespace:
-                    resultado += "  <Reservada namespace>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Palabra Reservada Namespace>\t" + lexicos.lexemas + "\n";
                     break;
                 case Std:
-                    resultado += "  <Reservada std>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Cin:
-                    resultado += "  <Funcion cin>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Define:
-                    resultado += "  <Reservada define>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Palabra Reservada Std>\t" + lexicos.lexemas + "\n";
                     break;
                 case Cout:
-                    resultado += "  <Funcion cout>\t" + lexicos.lexemas + "\n";
+                    resultado += "  <Palabra Reservada Cout>\t" + lexicos.lexemas + "\n";
                     break;
-                case Scanf:
-                    resultado += "  <Funcion scanf>\t" + lexicos.lexemas + "\n";
+                case Cin:
+                    resultado += "  <Palabra Reservada Cin>\t" + lexicos.lexemas + "\n";
                     break;
-                case Printf:
-                    resultado += "  <funcion printf>\t" + lexicos.lexemas + "\n";
+                case Endl:
+                    resultado += "  <Palabra Reservada Endl>\t" + lexicos.lexemas + "\n";
                     break;
                 case Main:
                     resultado += "  <Reservada main>\t" + lexicos.lexemas + "\n";
-                    break; 
-                case Op_log_and:
-                    resultado += "  <Operador and>\t" + lexicos.lexemas + "\n";
                     break;
-                case Op_log_or:
-                    resultado += "  <Operador or>\t" + lexicos.lexemas + "\n";
+                case SystemC:
+                    resultado += "  <Reservada System>\t" + lexicos.lexemas + "\n";
                     break;
-                case Op_log_not:
-                    resultado += "  <Operador not>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_log_and_bit:
-                    resultado += "  <Op and bit a bit>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_log_or_bit:
-                    resultado += "  <Op or bit a bit>\t" + lexicos.lexemas + "\n";
-                    break;            
-                case Op_rel_mayor_que:
-                    resultado += "  <Operador mayor que>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_rel_menor_que:
-                    resultado += "  <Operador menor que>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_rel_equivalente:
-                    resultado += "  <Operador equivalente>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_rel_diferente:
-                    resultado += "  <Operador diferente>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_rel_mayor_igual:
-                    resultado += "  <Op mayor o igual>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_rel_menor_igual:
-                    resultado += "  <Op menor o igual>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_rel_desplaz_izq:
-                    resultado += "  <Op desplazar izquierda>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_rel_desplaz_der:
-                    resultado += "  <Op desplazar derecha>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_atr_suma:
-                    resultado += "  <Op atribucion suma>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_atr_resta:
-                    resultado += "  <Op atribucion resta>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_inclu_lib:
-                    resultado += "  <Operador #>\t\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_atr_producto:
-                    resultado += "  <Op atr multiplicacion>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_atr_division:
-                    resultado += "  <Op atribucion division>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_atr_modulo:
-                    resultado += "  <Op atribucion modulo>\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_atr_incremento:
-                    resultado += "  <Operador Incremento\t" + lexicos.lexemas + "\n";
-                    break;
-                case Op_atr_decremento:
-                    resultado += "  <Operador Decremento>\t" + lexicos.lexemas + "\n";
-                    break;
-                case True:
-                    resultado += "  <Booleano true>\t" + lexicos.lexemas + "\n";
-                    break;
-                case False:
-                    resultado += "  <Booleano false>\t" + lexicos.lexemas + "\n";
-                    break;    
-                case P_coma:
+                case Punto_coma:
                     resultado += "  <Punto y coma>\t" + lexicos.lexemas + "\n";
                     break;
-                case Coma:
-                    resultado += "  <Coma>\t\t" + lexicos.lexemas + "\n";
+                case Printf:
+                    resultado += "  <Impresion en pantalla>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Dos_puntos:
+                    resultado += "  <Dos puntos>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Almohadilla:
+                    resultado += "  <Almohadilla>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Include:
+                    resultado += "  <Reservada Include>\t" + lexicos.lexemas + "\n";
                     break;
                 case Punto:
                     resultado += "  <Punto>\t\t" + lexicos.lexemas + "\n";
-                    break;
-                case Dos_puntos:
-                    resultado += "  <Dos puntos>\t\t" + lexicos.lexemas + "\n";
-                    break;
+                case Coma:
+                    resultado += "  <Coma>\t\t" + lexicos.lexemas + "\n";
                 case Identificador:
                     resultado += "  <Identificador>\t\t" + lexicos.lexemas + "\n";
                     break;
