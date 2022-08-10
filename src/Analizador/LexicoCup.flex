@@ -9,7 +9,7 @@ import java_cup.runtime.Symbol;
 %char
 L=[a-zA-Z_]+
 D=[0-9]+
-espacio=[ ,\t ,\r ,\n]+
+espacio=[ ,\t,\r,\n]+
 %{
     private Symbol symbol(int type, Object value){
         return new Symbol(type, yyline, yycolumn, value);
@@ -19,6 +19,7 @@ espacio=[ ,\t ,\r ,\n]+
     }
 %}
 %%
+
 /* Espacios en blanco */
 {espacio} {/*Ignore*/}
 
@@ -319,8 +320,11 @@ espacio=[ ,\t ,\r ,\n]+
 /* Palabra reservada Include */
 ( "include" ) {return new Symbol(sym.Include, yychar, yyline, yytext());}
 
+/* Identificador */
+{L}({L}|{D})* {return new Symbol(sym.Identificador, yychar, yyline, yytext());}
+
 /* Numero */
-{D}+|("-"){D}+|{D}+("."{D}+)|("-"){D}+("."{D}+) {return new Symbol(sym.Numero, yychar, yyline, yytext());}
+("(-"{D}+")")|{D}+ {return new Symbol(sym.Numero, yychar, yyline, yytext());}
 
 /* Error de analisis */
  . {return new Symbol(sym.ERROR, yychar, yyline, yytext());}

@@ -10,7 +10,6 @@ espacio=[ ,\t ,\r]+
     public String lexemas;
 %}
 %%
-
 /* Espacios en blanco */
 {espacio} {/*Ignore*/}
 
@@ -318,7 +317,7 @@ espacio=[ ,\t ,\r]+
 {L}({L}|{D})* {lexemas=yytext(); return Identificador;}
 
 /* Numero */
-{D}+|("-"){D}+|{D}+("."{D}+)|("-"){D}+("."{D}+) {lexemas=yytext(); return Numero;}
+("(-"{D}+")")|{D}+ {lexemas=yytext(); return Numero;}
 
 /* Error de analisis */
  . {return ERROR;}

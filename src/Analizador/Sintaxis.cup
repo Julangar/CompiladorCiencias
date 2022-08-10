@@ -28,12 +28,19 @@ terminal Linea, Comillas, Auto, Const, Enum, Goto, Sizeof, Register, Unsigned,
     Math, Stdio, Stdlib, Time, Iostream, Using, Namespace, Std, Cout, Cin, Endl,
     Main, Printf, Punto, Coma, Dos_puntos, Punto_coma, Almohadilla, Include, Identificador, 
     Numero, ERROR;
-non terminal INICIO, FIN, SENTENCIA, SENTENCIA_LIBRERIAS, SINTAXIS_LIBRERIAS, LIBRERIAS, ASIGNACION, R_ASIGNACION,
+non terminal INICIO, NUMERO, FIN, SENTENCIA, SENTENCIA_LIBRERIAS, SINTAXIS_LIBRERIAS, LIBRERIAS, ASIGNACION, R_ASIGNACION,
     ELEMENTOS, CADENA_CIN, CIN, T_DATO, OPERADORES_LOGICOS, OPERADORES_RELACIONALES, CONDICION, CADENA_CONDICION, SENTENCIA_CONDICION,
     PAUSA, TEXTO, CADENA_TEXTO, CADENA_COUT, COUT, OPERADORES_ASIGNACION, OPERADORES_ARITMETICOS, DECLARACION, DECLARACION_FOR, IF, IF_ELSE,
     R_DECLARACION, WHILE, DO_WHILE, FOR, SENTENCIA_FOR, SWITCH, SENTENCIA_SWITCH, DECLARACION_SWITCH;
 
 start with INICIO;
+
+NUMERO ::=
+    Resta Numero |
+    Numero |
+    Resta Numero Punto Numero |
+    Numero Punto Numero
+;
 
 INICIO ::= 
     SENTENCIA_LIBRERIAS Int Main Parentesis_a Parentesis_c Llave_a SENTENCIA Llave_c |
@@ -74,7 +81,7 @@ SENTENCIA ::=
 ;
 
 FIN ::=
-    Return Numero Punto_coma
+    Return NUMERO Punto_coma
 ;
 PAUSA ::=
     SystemC Parentesis_a Comillas Identificador Comillas Parentesis_c Punto_coma
@@ -127,8 +134,8 @@ TEXTO ::=
 CADENA_COUT ::=
     CADENA_COUT Op_desplazamiento_bits_izq TEXTO |
     Op_desplazamiento_bits_izq TEXTO |
-    CADENA_COUT Op_desplazamiento_bits_izq Numero |
-    Op_desplazamiento_bits_izq Numero |
+    CADENA_COUT Op_desplazamiento_bits_izq NUMERO |
+    Op_desplazamiento_bits_izq NUMERO |
     CADENA_COUT Op_desplazamiento_bits_izq Identificador |
     Op_desplazamiento_bits_izq Identificador
 ;
@@ -165,9 +172,9 @@ OPERADORES_ARITMETICOS ::=
 
 ASIGNACION ::=
     /* Punto y coma  */
-    Identificador OPERADORES_ASIGNACION Numero Punto_coma |
+    Identificador OPERADORES_ASIGNACION NUMERO Punto_coma |
     Identificador OPERADORES_ASIGNACION Identificador Punto_coma |
-    Identificador OPERADORES_ASIGNACION Numero R_ASIGNACION Punto_coma |
+    Identificador OPERADORES_ASIGNACION NUMERO R_ASIGNACION Punto_coma |
     Identificador OPERADORES_ASIGNACION Identificador R_ASIGNACION Punto_coma |
 
     Identificador Op_incremento Punto_coma |
@@ -176,24 +183,19 @@ ASIGNACION ::=
     Op_decremento Identificador Punto_coma
 ;
 R_ASIGNACION ::=
-    R_ASIGNACION OPERADORES_ARITMETICOS Numero |
+    R_ASIGNACION OPERADORES_ARITMETICOS NUMERO |
     R_ASIGNACION OPERADORES_ARITMETICOS Identificador |
 
-    OPERADORES_ARITMETICOS Numero |
+    OPERADORES_ARITMETICOS NUMERO |
     OPERADORES_ARITMETICOS Identificador
 ;
 
 T_DATO ::=
-    Cadena |
     Int |
-    Short Int |
-    Long Int|
+    Short |
+    Long |
     Float |
-    Short Float |
-    Long Float|
-    Double |
-    Short Double |
-    Long Double
+    Double
 ;
 R_DECLARACION ::=
     R_DECLARACION Coma Identificador |
@@ -204,9 +206,9 @@ DECLARACION ::=
     T_DATO Identificador R_DECLARACION Punto_coma |
 
     T_DATO Identificador OPERADORES_ASIGNACION Identificador Punto_coma |
-    T_DATO Identificador OPERADORES_ASIGNACION Numero Punto_coma |
+    T_DATO Identificador OPERADORES_ASIGNACION NUMERO Punto_coma |
     T_DATO Identificador OPERADORES_ASIGNACION Identificador R_ASIGNACION Punto_coma |
-    T_DATO Identificador OPERADORES_ASIGNACION Numero R_ASIGNACION Punto_coma
+    T_DATO Identificador OPERADORES_ASIGNACION NUMERO R_ASIGNACION Punto_coma
 ;
 
 OPERADORES_LOGICOS ::=
@@ -224,9 +226,9 @@ OPERADORES_RELACIONALES ::=
 
 CONDICION ::=
     Identificador OPERADORES_RELACIONALES Identificador |
-    Identificador OPERADORES_RELACIONALES Numero |
-    Numero OPERADORES_RELACIONALES Numero |
-    Numero OPERADORES_RELACIONALES Identificador |
+    Identificador OPERADORES_RELACIONALES NUMERO |
+    NUMERO OPERADORES_RELACIONALES NUMERO |
+    NUMERO OPERADORES_RELACIONALES Identificador |
     
     Parentesis_a CONDICION Parentesis_c
 ;
