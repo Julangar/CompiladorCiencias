@@ -1,13 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <iostream>
 using namespace std;
 int main(){
-int a=1,b=0;
-printf("Al inicio: %d \n",b);
+int a=1;
+int b=0;
+cout << b;
 if(a==1){
  b=5;
 }
-printf("Despues: %d \n",b);
-system("pause");
-return b;
+cout << b;
+return 0;
 }
